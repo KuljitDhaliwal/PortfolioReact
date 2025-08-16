@@ -1,42 +1,53 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@font-face {
+    font-family: 'outlineFont';
+    src: url(./assets/fonts/ostrich-sans/OstrichSans-Medium.otf);
+    font-weight: normal;
+    font-style: normal;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.orbitron {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
   }
-  to {
-    transform: rotate(360deg);
+
+.otherFont{
+    font-family: 'outlineFont', sans-serif;
+}
+
+
+
+body.bg-light{
+  background-color: white;
+  filter: url(#noiseFilter);
+}
+
+body.bg-dark{
+  background-color: rgb(38, 33, 34);
+  filter: url(#noiseFilter);
+}
+
+/* @keyframes float1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(40vw, 10vh);
+  }
+  50% {
+    transform: translate(80vw, 70vh);
+  }
+  75% {
+    transform: translate(20vw, 90vh);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+.animate-float1 {
+  animation: float1 20s ease-in-out infinite;
+} */
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
