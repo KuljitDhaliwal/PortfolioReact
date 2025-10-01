@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@font-face {
+    font-family: 'outlineFont';
+    src: url(./assets/fonts/ostrich-sans/OstrichSans-Medium.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+.orbitron {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+.otherFont{
+    font-family: 'outlineFont', sans-serif;
+}
+
+
+
+body.bg-light{
+  background-color: white;
+  filter: url(#noiseFilter);
+}
+
+body.bg-dark{
+  background-color: rgb(38, 33, 34);
+  filter: url(#noiseFilter);
+}
+
+/* @keyframes float1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(40vw, 10vh);
+  }
+  50% {
+    transform: translate(80vw, 70vh);
+  }
+  75% {
+    transform: translate(20vw, 90vh);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-float1 {
+  animation: float1 20s ease-in-out infinite;
+} */
+
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+*{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
