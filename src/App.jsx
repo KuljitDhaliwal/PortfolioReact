@@ -10,6 +10,7 @@ function App() {
 
   return (
     <>
+      <div className='noisy-back'></div>
       <Routes>
         <Route path='/PortfolioReact' element={<Layout/>}>
           <Route index element={<Home/>} />
