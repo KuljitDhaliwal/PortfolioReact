@@ -5,8 +5,9 @@ import { themeContext } from "../contexts/ThemeContext";
 
 export const Work = () => {
   const { clicked } = useContext(sidebarContext)
-  const { theme } = useContext(themeContext)  
+  const { theme } = useContext(themeContext)
   const [mouseOpacity, setMouseOpacity] = useState([]);
+  const [windowTop, setWindowTop] = useState(0)
   const refs = useRef([])
   const projects = [
     {
@@ -15,7 +16,7 @@ export const Work = () => {
       projectLink: 'https://github.com/KuljitDhaliwal/SolimarBus',
       projectImagePath: '/PortfolioReact/pag1.png',
     },
-    {      
+    {
       projectName: 'Wizzcabs',
       projectDetails: 'Australian Taxi Services',
       projectLink: 'https://wizzcabs.com.au/',
@@ -23,42 +24,51 @@ export const Work = () => {
     }
   ]
 
-    useEffect(() => {
-      setMouseOpacity(projects.map(() => 100));
-    }, []);
-  
-  
+  const handleWindowHeight = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth"
+    });
+  };
+
   useEffect(() => {
-    refs.current.forEach((el, index)=>{
-    if (!el) return
-    const handleScrollOrHover = () => {
-      setMouseOpacity((prev) => {
-        const newOpacities = [...prev];
-        newOpacities[index] = el.scrollTop > 20 ? 0 : 100;
-        return newOpacities;
-      });
-    };
+    setMouseOpacity(projects.map(() => 0));
+  }, []);
 
-    const mouseLeave = () => {
-      let scrollTop = el.scrollTop
-      if (scrollTop > 50) {
-        el.scrollBy(0, -scrollTop)
+  
+  
+
+
+  useEffect(() => {
+    refs.current.forEach((el, index) => {
+      if (!el) return
+      const handleScrollOrHover = () => {
+        setMouseOpacity((prev) => {
+          const newOpacities = [...prev];
+          newOpacities[index] = el.scrollTop > 20 ? 0 : 100;
+          return newOpacities;
+        });
+      };
+      const mouseLeave = () => {
+        let scrollTop = el.scrollTop
+        if (scrollTop > 50) {
+          el.scrollBy(0, -scrollTop)
+        }
       }
-    }
 
-    el.addEventListener('scroll', handleScrollOrHover)
-    el.addEventListener('mouseover', handleScrollOrHover)
-    el.addEventListener('mouseleave', mouseLeave);
+      el.addEventListener('scroll', handleScrollOrHover)
+      el.addEventListener('mouseover', handleScrollOrHover)
+      el.addEventListener('mouseleave', mouseLeave);
 
 
-    return () => {
-      el.removeEventListener('scroll', handleScrollOrHover)
-      el.removeEventListener('mouseover', handleScrollOrHover)
-      el.removeEventListener('mouseleave', mouseLeave);
-    }
-  });
+      return () => {
+        el.removeEventListener('scroll', handleScrollOrHover)
+        el.removeEventListener('mouseover', handleScrollOrHover)
+        el.removeEventListener('mouseleave', mouseLeave);
+      }
+    });
 
-  },[projects.length])
+  }, [projects.length])
 
 
   return (
@@ -70,8 +80,7 @@ export const Work = () => {
           </h2>
           <hr />
           {projects.map((pro, i) => {
-            return <a href={pro.projectLink} target="_blank">
-              <div className="flex justify-between ref group py-10 cursor-pointer h-28 hover:h-[40rem] duration-500 transition-all overflow-hidden" id="project1">
+            return <><div onMouseOver={handleWindowHeight} className={`flex justify-between ref group py-10 cursor-pointer h-28 hover:h-[40rem] duration-500 transition-all overflow-hidden`} id="project1">
                 <div className="w-full">
                   <div className="flex justify-between items-center w-full">
                     <div className="flex items-center justify-between gap-2">
@@ -80,7 +89,7 @@ export const Work = () => {
                     </div>
                     <p>{pro.projectDetails}</p>
                   </div>
-                  {/* console.log(refs) */}
+                  <a href={pro.projectLink} target="_blank">
                   <div ref={(em)=> refs.current[i] = em} className="justify-self-center w-100 h-[30rem] scroll-smooth mt-10 overflow-scroll border-6 relative group/image border-gray-400 rounded hover:shadow-2xl hover:scale-102 duration-300 transition-all">
                     <img src={pro.projectImagePath} alt="Prject Image" className="max-w-full h-auto" />
                     <div className={`absolute z-50 w-28 flex justify-center bg-green-500 items-center h-28 opacity-${mouseOpacity[i]} bg-orange-300/40 transition-all duration-300  top-1/2 left-1/2 rounded-full -translate-x-1/2 -translate-y-1/2`}>
@@ -91,10 +100,11 @@ export const Work = () => {
                       </span>
                     </div>
                   </div>
+                  </a>
                 </div>
               </div>
               <hr />
-            </a>
+              </>
           })}
         </div>
       </div>
