@@ -2,6 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { sidebarContext } from "../contexts/SidebarContext";
 import { themeContext } from "../contexts/ThemeContext";
+import { projects } from "../HardData/Projects";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export const Work = () => {
   const { clicked } = useContext(sidebarContext)
@@ -9,20 +11,7 @@ export const Work = () => {
   const [mouseOpacity, setMouseOpacity] = useState([]);
   const [windowTop, setWindowTop] = useState(0)
   const refs = useRef([])
-  const projects = [
-    {
-      projectName: 'Solimar Bus',
-      projectDetails: 'Spanish Bus Services',
-      projectLink: 'https://github.com/KuljitDhaliwal/SolimarBus',
-      projectImagePath: '/PortfolioReact/pag1.png',
-    },
-    {
-      projectName: 'Wizzcabs',
-      projectDetails: 'Australian Taxi Services',
-      projectLink: 'https://wizzcabs.com.au/',
-      projectImagePath: '/PortfolioReact/wizz.png',
-    }
-  ]
+  const [imageHeight, setImageHeight] = useState({})
 
   const handleWindowHeight = () => {
     window.scrollTo({
@@ -34,9 +23,6 @@ export const Work = () => {
   useEffect(() => {
     setMouseOpacity(projects.map(() => 0));
   }, []);
-
-  
-  
 
 
   useEffect(() => {
@@ -80,32 +66,49 @@ export const Work = () => {
           </h2>
           <hr />
           {projects.map((pro, i) => {
-            return <><div onMouseOver={handleWindowHeight} className={`flex justify-between ref group py-10 cursor-pointer h-28 hover:h-[40rem] duration-500 transition-all overflow-hidden`} id="project1">
-                <div className="w-full">
-                  <div className="flex justify-between items-center w-full">
-                    <div className="flex items-center justify-between gap-2">
-                      <FaArrowRight className="group-hover:w-10 w-0 transition-all duration-500 text-2xl" />
-                      <h3 className="orbitron md:text-2xl text-xl">{pro.projectName}</h3>
-                    </div>
-                    <p>{pro.projectDetails}</p>
+            return <div key={i}><div onMouseOver={handleWindowHeight} className={`flex justify-between ref group py-10 
+            cursor-pointer h-28 hover:h-[25rem] duration-500 transition-all overflow-hidden`} id="project1">
+              <div className="w-full">
+                <div className="flex justify-between items-center w-full">
+                  <div className="flex items-center justify-between gap-2">
+                    <FaArrowRight className="group-hover:w-10 w-0 transition-all duration-500 text-2xl" />
+                    <h3 className="orbitron md:text-2xl text-xl">{pro.projectName}</h3>
                   </div>
-                  <a href={pro.projectLink} target="_blank">
-                  <div ref={(em)=> refs.current[i] = em} className="justify-self-center w-100 h-[30rem] scroll-smooth mt-10 overflow-scroll border-6 relative group/image border-gray-400 rounded hover:shadow-2xl hover:scale-102 duration-300 transition-all">
-                    <img src={pro.projectImagePath} alt="Prject Image" className="max-w-full h-auto" />
-                    <div className={`absolute z-50 w-28 flex justify-center bg-green-500 items-center h-28 opacity-${mouseOpacity[i]} bg-orange-300/40 transition-all duration-300  top-1/2 left-1/2 rounded-full -translate-x-1/2 -translate-y-1/2`}>
-                      <span className="bg-transparent border-2 border-black h-18 w-10 rounded-2xl relative flex justify-center p-5">
-                        <span className="absolute w-8 h-10 top-1/2 left-1/2 flex overflow-hidden justify-center -translate-x-1/2 -translate-y-1/2">
-                          <span className="w-1 h-[20px] bg-black mouse-animation"></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                  </a>
+                  <p>{pro.projectDetails}</p>
                 </div>
+                <a href={pro.projectLink} target="_blank">
+                  <div ref={(em) => refs.current[i] = em}
+                    className={`justify-self-center w-100 h-[15rem] scroll-smooth mt-10 
+                  overflow-scroll border-6 relative group/image border-gray-400 rounded 
+                  hover:shadow-2xl hover:scale-102 duration-300 transition-all`}>
+                    <img src={pro.projectImagePath} alt="Prject Image"
+                      className="max-w-full h-auto" onLoad={(e) => {
+                        setImageHeight(prev => ({ ...prev, [i]: e.target.naturalHeight }))
+                      }}
+                    />
+                    {console.log('Check Height', imageHeight[i])}
+                    {imageHeight[i] > 1900 && (
+                      <div className={`absolute z-50 w-28 flex justify-center bg-green-500 items-center h-28 opacity-${mouseOpacity[i]} bg-orange-300/40 transition-all duration-300  top-1/2 left-1/2 rounded-full -translate-x-1/2 -translate-y-1/2`}>
+                        <span className="bg-transparent border-2 border-black h-18 w-10 rounded-2xl relative flex justify-center p-5">
+                          <span className="absolute w-8 h-10 top-1/2 left-1/2 flex overflow-hidden justify-center -translate-x-1/2 -translate-y-1/2">
+                            <span className="w-1 h-[20px] bg-black mouse-animation"></span>
+                          </span>
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </a>
               </div>
+            </div>
               <hr />
-              </>
+            </div>
           })}
+          <a href="https://github.com/KuljitDhaliwal?tab=repositories" target="_blank">
+            <div className='flex items-center w-fit ml-auto mt-5 gap-2 cursor-pointer md:text-xl group relative' onClick={() => navigate('/PortfolioReact/work')}>
+              <FaArrowRightLong /> <p>see my projects</p>
+              <p className={`absolute w-0 group-hover:w-full transition-all duration-300 h-[2px] bottom-0 ${theme === "light" ? 'bg-black' : 'bg-white'}`}></p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
