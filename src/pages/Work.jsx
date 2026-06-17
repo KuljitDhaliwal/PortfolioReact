@@ -58,7 +58,8 @@ export const Work = () => {
 
 
   return (
-    <div className={`${clicked ? '-translate-y-5 opacity-0' : 'translate-y-0 opacity-100'} ${theme === "light" ? 'text-black' : 'text-white'} min-h-screen flex md:flex-row flex-col w-full justify-center items-center px-5`}>
+    <div className={`${clicked ? '-translate-y-5 opacity-0' : 'translate-y-0 opacity-100'} ${theme === "light" ? 'text-black' : 'text-white'} min-h-screen flex 
+    md:flex-row flex-col w-full justify-center items-center px-5`}>
       <div className="flex justify-center items-center w-full gap-5">
         <div className="project-text-sec md:w-1/2 w-full">
           <h2 className="text-5xl flex md:gap-3 gap-1 orbitron mb-5">
@@ -78,7 +79,7 @@ export const Work = () => {
                 </div>
                 <a href={pro.projectLink} target="_blank">
                   <div ref={(em) => refs.current[i] = em}
-                    className={`justify-self-center w-100 h-[15rem] scroll-smooth mt-10 
+                    className={`justify-self-center w-100 h-[15rem] scroll-smooth mt-8 
                   overflow-scroll border-6 relative group/image border-gray-400 rounded 
                   hover:shadow-2xl hover:scale-102 duration-300 transition-all`}>
                     <img src={pro.projectImagePath} alt="Prject Image"

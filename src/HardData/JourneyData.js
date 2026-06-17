@@ -14,17 +14,17 @@ export const JourneyDataStudy = [
 export const JourneyDataExperience = [
     {
         job: 'Virtual Assistant & Technology Support',
-        year: 'Sep 2018 - Mar 2023',
+        year: 'Sep 2018 - Mar 2024',
         company: 'Yirtual'
     },
     {
         job: 'Coding Support & Frontend Development',
-        year: 'Apr 2023 - Mar 2024',
+        year: 'Apr 2024 - Mar 2025',
         company: 'Yirtual'
     },
     {
         job: 'Frontend Developer',
-        year: 'Mar 2024 - Present',
+        year: 'Mar 2025 - Present',
         company: 'Freelance & Personal Projects'
     },
 ];
