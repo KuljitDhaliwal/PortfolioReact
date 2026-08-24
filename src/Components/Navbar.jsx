@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { IoMoonOutline } from "react-icons/io5";
 import { CiSun } from "react-icons/ci";
-import { themeContext } from '../contexts/ThemeContext';
+import { ThemeContext } from '../contexts/ThemeContext';
 import { useNavigate } from 'react-router-dom';
-import { sidebarContext } from '../contexts/SidebarContext';
+import { SidebarContext } from '../contexts/SidebarContext';
 
 
 function Navbar() {
-    const { theme, toggleTheme } = useContext(themeContext);
-    const {handleClick, clicked, setClicked} = useContext(sidebarContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
+    const {handleClick, clicked, setClicked} = useContext(SidebarContext);
     const navigate = useNavigate(); 
 
     return (

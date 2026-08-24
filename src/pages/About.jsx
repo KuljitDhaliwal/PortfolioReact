@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { FaArrowDownLong } from "react-icons/fa6";
-import { themeContext } from '../contexts/ThemeContext';
-import { sidebarContext } from '../contexts/SidebarContext';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { SidebarContext } from '../contexts/SidebarContext';
 import '../App.css'
 import Journey from '../Components/Journey';
 import Skills from '../Components/Skills';
@@ -9,8 +9,8 @@ import Skills from '../Components/Skills';
 
 
 function About() {
-    const { theme } = useContext(themeContext);
-    const { clicked } = useContext(sidebarContext);
+    const { theme } = useContext(ThemeContext);
+    const { clicked } = useContext(SidebarContext);
     const [show, setShow] = useState(false)
     const [showSkills, setShowSkills] = useState(false)
 

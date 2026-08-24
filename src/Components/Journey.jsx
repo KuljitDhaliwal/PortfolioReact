@@ -2,7 +2,7 @@ import { education, experience } from '../StaticData/Journey.js'
 import { PiBooksThin } from "react-icons/pi";
 import { BsPersonWorkspace } from "react-icons/bs";
 
-function Journey({ theme }) {
+function Journey() {
     return (
         <div className="relative">
             <h2 className='md:text-3xl text-2xl orbitron text-red-400'>My Journey</h2>

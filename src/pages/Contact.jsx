@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { FaArrowDownLong } from "react-icons/fa6";
-import { sidebarContext } from '../contexts/SidebarContext';
-import { themeContext } from '../contexts/ThemeContext';
+import { SidebarContext } from '../contexts/SidebarContext';
+import { ThemeContext } from '../contexts/ThemeContext';
 function Contact() {
-    const {clicked} = useContext(sidebarContext);
-    const {theme} = useContext(themeContext);
+    const {clicked} = useContext(SidebarContext);
+    const {theme} = useContext(ThemeContext);
     return (
         <div className={`min-h-screen w-full max-w-6xl m-auto flex justify-center items-center transition-all duration-300 ${clicked ? '-translate-y-5 opacity-0' : 'translate-y-0 opacity-100' } ${theme === 'light' ? 'text-black' : 'text-white'}`}>
             <div className='w-full px-5 grid gap-6'>

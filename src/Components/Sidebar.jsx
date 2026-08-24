@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { themeContext } from '../contexts/ThemeContext';
+import { useContext, useEffect, useRef } from 'react'
+import { ThemeContext } from '../contexts/ThemeContext';
 import { Link } from 'react-router-dom';
 import navigation from '../StaticData/Navigation';
 function Sidebar({ clicked, handleClick }) {
-    const { theme } = useContext(themeContext);
+    const { theme } = useContext(ThemeContext);
     const listRef = useRef([]);
 
 
@@ -34,7 +34,7 @@ function Sidebar({ clicked, handleClick }) {
                                 <p>0{item.id}</p>
                                 <h2 className='orbitron text-3xl md:text-5xl uppercase group'>
                                     <Link to={item.path}>
-                                        {item.label.split("").map((char, index)=>(
+                                        {item.label.split("").map(char=>(
                                             char.toLowerCase() === 'o' ? (
                                             <span key={item.label} className='inline-block transition-all duration-300 group-hover:scale-x-125'>{char}</span>
                                         ) : char

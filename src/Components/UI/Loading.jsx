@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { themeContext } from "../../contexts/ThemeContext"
+import { ThemeContext } from "../../contexts/ThemeContext"
 
 function Loading({height}) {
-    const {theme} = useContext(themeContext)
+    const {theme} = useContext(ThemeContext)
     return (
         <div className={`w-full h-full bg-gray-200 ${height}
           animate-pulse text-2xl grid place-items-center rounded-md shadow`}>

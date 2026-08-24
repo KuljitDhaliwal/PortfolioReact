@@ -1,14 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
+
+export const EffectContext = createContext();
 
 
-export const effectContext = createContext();
-
-
-export const EffectProvider = ({children}) =>{
-    const [effect, setEffect] = useState(false);
-    return(
-        <effectContext.Provider value={{effect, setEffect}}>
-            {children}
-        </effectContext.Provider>
-    )
-}

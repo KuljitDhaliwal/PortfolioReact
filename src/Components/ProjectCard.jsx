@@ -1,18 +1,19 @@
 import { useContext, useState } from "react";
 import { Button } from "./UI/Button"
 import { FaGithub } from "react-icons/fa";
-import { RiExternalLinkFill } from "react-icons/ri";
-import { themeContext } from "../contexts/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Tools from "./Tools";
 import Loading from "./UI/Loading";
 import { setHeading } from "../utils/HeadingSet";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 
 
 function ProjectCard({ project, image, fallbackImg }) {
-    const { theme } = useContext(themeContext)
+    const { theme } = useContext(ThemeContext)
     const [imgLoading, setImgLoading] = useState(true)
+    const navigate = useNavigate()
     return (
         <div className={`${theme === 'dark' ? 'bg-[#535353]' : 'bg-[#f3f2f2]'} shadow-md
          rounded-md grid grid-rows-[auto_1fr] group hover:-translate-y-2 transition-all duration-300`}>

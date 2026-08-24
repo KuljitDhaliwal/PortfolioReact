@@ -1,9 +1,7 @@
 import { skills } from '../StaticData/Skills.js'
-import { PiBooksThin } from "react-icons/pi";
-import { BsPersonWorkspace } from "react-icons/bs";
-import { FaCode } from "react-icons/fa6";
 
-function Skills({ theme }) {
+
+function Skills() {
     return (
         <div className="relative">
             <h2 className='md:text-3xl text-2xl orbitron text-red-400'>My Skills</h2>

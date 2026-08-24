@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 import '../App.css'
-import { themeContext } from '../contexts/ThemeContext';
-import { sidebarContext } from '../contexts/SidebarContext';
-import { effectContext } from '../contexts/EffectContext';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { SidebarContext } from '../contexts/SidebarContext';
+import { EffectContext } from '../contexts/EffectContext';
 import { useNavigate } from 'react-router-dom';
 import { Effect } from '../Components/Effect';
 
 function Home() {
     const navigate = useNavigate()
-    const { theme } = useContext(themeContext);
-    const { clicked } = useContext(sidebarContext);
-    const { effect, setEffect } = useContext(effectContext);
+    const { theme } = useContext(ThemeContext);
+    const { clicked } = useContext(SidebarContext);
+    const { effect, setEffect } = useContext(EffectContext);
 
 
     return (

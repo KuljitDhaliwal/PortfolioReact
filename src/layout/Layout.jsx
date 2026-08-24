@@ -2,11 +2,11 @@ import { useEffect, useContext } from 'react'
 import Navbar from '../Components/Navbar'
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../Components/SIdebar';
-import { themeContext } from '../contexts/ThemeContext';
-import { sidebarContext } from '../contexts/SidebarContext';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { SidebarContext } from '../contexts/SidebarContext';
 function Layout() {
-    const { theme } = useContext(themeContext);
-    const { clicked, handleClick } = useContext(sidebarContext);
+    const { theme } = useContext(ThemeContext);
+    const { clicked, handleClick } = useContext(SidebarContext);
     useEffect(() => {
         if (theme === 'light') {
             document.body.classList.remove('bg-dark');

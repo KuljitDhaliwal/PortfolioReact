@@ -1,74 +1,25 @@
 
-import { useContext, useEffect, useRef, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
-import { sidebarContext } from "../contexts/SidebarContext";
-import { themeContext } from "../contexts/ThemeContext";
-import { projects } from "../StaticData/Projects";
+import { useContext } from "react";
+import { SidebarContext } from "../contexts/SidebarContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import { githubProjects } from "../services/github.service";
 import ProjectCard from "../Components/ProjectCard";
 import Loading from "../Components/UI/Loading";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Work() {
-  const { clicked } = useContext(sidebarContext)
-  const { theme } = useContext(themeContext)
-  const [mouseOpacity, setMouseOpacity] = useState([]);
-  const [windowTop, setWindowTop] = useState(0)
-  const refs = useRef([])
-  const [imageHeight, setImageHeight] = useState({})
+  const { clicked } = useContext(SidebarContext)
+  const { theme } = useContext(ThemeContext)
+  const navigate = useNavigate()
 
-  const { data, isError, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['githubProjects'],
     queryFn: githubProjects
   })
-
-
-
-  const handleWindowHeight = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth"
-    });
-  };
-
-  useEffect(() => {
-    setMouseOpacity(projects.map(() => 0));
-  }, []);
-
-
-  useEffect(() => {
-    refs.current.forEach((el, index) => {
-      if (!el) return
-      const handleScrollOrHover = () => {
-        setMouseOpacity((prev) => {
-          const newOpacities = [...prev];
-          newOpacities[index] = el.scrollTop > 20 ? 0 : 100;
-          return newOpacities;
-        });
-      };
-      const mouseLeave = () => {
-        let scrollTop = el.scrollTop
-        if (scrollTop > 50) {
-          el.scrollBy(0, -scrollTop)
-        }
-      }
-
-      el.addEventListener('scroll', handleScrollOrHover)
-      el.addEventListener('mouseover', handleScrollOrHover)
-      el.addEventListener('mouseleave', mouseLeave);
-
-
-      return () => {
-        el.removeEventListener('scroll', handleScrollOrHover)
-        el.removeEventListener('mouseover', handleScrollOrHover)
-        el.removeEventListener('mouseleave', mouseLeave);
-      }
-    });
-
-  }, [projects.length])
 
 
   const filteredData = data?.filter(project => project.topics.includes('portfolio'))

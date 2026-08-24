@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
-import { effectContext } from "../contexts/EffectContext"
+import { EffectContext } from "../contexts/EffectContext"
 
 export const Effect = () => {
-    const { effect } = useContext(effectContext);
+    const { effect } = useContext(EffectContext);
     const [height, setHeight] = useState()
     useEffect(()=>{
         const handleHeight = () =>{
