@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import About from './pages/About'
-import Layout from './layout/layout';
+import Layout from './layout/Layout'
 import Home from './pages/Home'
 import Contact from './pages/Contact';
 import Work from './pages/Work';
@@ -15,7 +15,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div>
         <Routes>
-          <Route path='/' element={<Layout />}>
+          <Route path='/' element={<Layout/>}>
             <Route index element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
