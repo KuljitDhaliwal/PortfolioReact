@@ -1,9 +1,9 @@
 import { useEffect, useContext } from 'react'
 import Navbar from '../Components/Navbar'
-import { Outlet } from 'react-router-dom';
-import Sidebar from '../Components/SIdebar';
-import { ThemeContext } from '../contexts/ThemeContext';
-import { SidebarContext } from '../contexts/SidebarContext';
+import { Outlet } from 'react-router-dom'
+import Sidebar from '../Components/Sidebar'
+import { ThemeContext } from '../contexts/ThemeContext'
+import { SidebarContext } from '../contexts/SidebarContext'
 function Layout() {
     const { theme } = useContext(ThemeContext);
     const { clicked, handleClick } = useContext(SidebarContext);
