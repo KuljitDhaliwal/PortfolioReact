@@ -1,18 +1,17 @@
-import React, {useState, useEffect, useContext} from 'react'
+import { useEffect, useContext } from 'react'
 import Navbar from '../Components/Navbar'
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../Components/SIdebar';
 import { themeContext } from '../contexts/ThemeContext';
 import { sidebarContext } from '../contexts/SidebarContext';
-import { Effect } from '../Components/Effect';
 function Layout() {
     const { theme } = useContext(themeContext);
-    const {clicked, handleClick} = useContext(sidebarContext);
-    useEffect(()=>{
-        if(theme === 'light'){
+    const { clicked, handleClick } = useContext(sidebarContext);
+    useEffect(() => {
+        if (theme === 'light') {
             document.body.classList.remove('bg-dark');
             document.body.classList.add('bg-light');
-        } else{
+        } else {
             document.body.classList.remove('bg-light');
             document.body.classList.add('bg-dark');
         }
@@ -31,7 +30,8 @@ function Layout() {
             {clicked && <Sidebar clicked={clicked} handleClick={handleClick} />}
             {/* <Effect/> */}
             <div>
-                <Outlet/>
+                <div className='back'></div>
+                <Outlet />
             </div>
         </div>
     )

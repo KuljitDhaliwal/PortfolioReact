@@ -1,68 +1,53 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { themeContext } from '../contexts/ThemeContext';
 import { Link } from 'react-router-dom';
-
-function Sidebar({clicked, handleClick}) {
-    const {theme} = useContext(themeContext);
-    const listRef = useRef();
-    useEffect(() => {
-        const list = listRef.current.querySelectorAll("li");
-        list.forEach((element, i) => {
-          setTimeout(() => {
-              element.classList.add("translate-y-0", "opacity-100");
-              element.classList.remove("-translate-y-5", "opacity-0");
-          }, i * 300);
-        });
-      }, [clicked]);
+import navigation from '../StaticData/Navigation';
+function Sidebar({ clicked, handleClick }) {
+    const { theme } = useContext(themeContext);
+    const listRef = useRef([]);
 
 
-      
-  return (
-    <div className='w-full h-screen flex overflow-hidden items-center justify-center absolute inset-0 z-20'>
-        <div>
-            <ul className={`grid gap-10 transition-all duration-300 ${theme ==="light" ? 'text-black' : 'text-white'}`} ref={listRef} onClick={handleClick}>
-                <li className='opacity-0 -translate-y-5 duration-300 cursor-pointer transition-all'>
-                    <span className='flex items-end gap-2'>
-                        <p>01</p>
-                        <h2 className='orbitron text-3xl md:text-5xl uppercase group'>
-                            <Link to='/PortfolioReact'>
-                                H<span className='inline-block transition-all duration-300 group-hover:scale-x-125'>o</span>me
-                            </Link>
-                        </h2>
-                    </span>
-                </li>
-                <li className='opacity-0 -translate-y-5 duration-300 cursor-pointer transition-all'>
-                    <span className='flex items-end gap-2'>
-                        <p>02</p>
-                        <h2 className='orbitron text-3xl md:text-5xl uppercase group'>
-                            <Link to='/PortfolioReact/work'>
-                                W<span className='inline-block transition-all duration-300 group-hover:scale-x-125'>o</span>rk
-                            </Link>
-                        </h2>
-                    </span>
-                </li>
-                <li className='opacity-0 -translate-y-5 duration-300 cursor-pointer transition-all'>
-                    <span className='flex items-end gap-2'>
-                        <p>03</p>
-                        <h2 className='orbitron text-3xl md:text-5xl uppercase group'>
-                            <Link to={'/PortfolioReact/about'}>
-                                Ab<span className='inline-block transition-all duration-300 group-hover:scale-x-125'>o</span>ut
-                            </Link>
-                        </h2>
-                    </span>
-                </li>
-                <li className='opacity-0 -translate-y-5 duration-300 cursor-pointer transition-all'>
-                    <span className='flex items-end gap-2'>
-                        <p>04</p>
-                        <Link to="/PortfolioReact/contact">
-                            <h2 className='orbitron text-3xl md:text-5xl uppercase group'>C<span className='inline-block transition-all duration-300 group-hover:scale-x-125'>o</span>ntact</h2>
-                        </Link>
-                    </span>
-                </li>
-            </ul>
+    useEffect(()=>{
+        const list = listRef.current.map((element, index)=>{
+            return setTimeout(()=>{
+                element.classList.add('translate-y-0', 'opacity-100')
+                element.classList.remove('-translate-y-5', 'opacity-0')
+            }, index * 300)
+        })
+
+        return ()=>{
+            list.forEach(clearTimeout)
+        }
+    },[clicked])
+
+
+
+
+
+    return (
+        <div className='w-full h-screen flex overflow-hidden items-center justify-center fixed inset-0 z-20'>
+            <div>
+                <ul className={`grid gap-10 transition-all duration-300 ${theme === "light" ? 'text-black' : 'text-white'}`} onClick={handleClick}>
+                    {navigation.map((item, key) => {
+                        return <li key={item.id} ref={(el)=> listRef.current[key] = el} className={`-translate-y-5 opacity-0 duration-300 cursor-pointer transition-all`}>
+                            <span className='flex items-end gap-2'>
+                                <p>0{item.id}</p>
+                                <h2 className='orbitron text-3xl md:text-5xl uppercase group'>
+                                    <Link to={item.path}>
+                                        {item.label.split("").map((char, index)=>(
+                                            char.toLowerCase() === 'o' ? (
+                                            <span key={item.label} className='inline-block transition-all duration-300 group-hover:scale-x-125'>{char}</span>
+                                        ) : char
+                                        ))}
+                                    </Link>
+                                </h2>
+                            </span>
+                        </li>
+                    })}
+                </ul>
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Sidebar

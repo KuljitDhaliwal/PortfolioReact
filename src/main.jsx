@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { SidebarProvider } from './contexts/SidebarContext.jsx'
 import { EffectProvider } from './contexts/EffectContext.jsx'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

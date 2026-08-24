@@ -12,11 +12,11 @@ function Navbar() {
     const navigate = useNavigate(); 
 
     return (
-        <div className='w-full mx-auto md:px-30 px-5 fixed top-10 z-30'>
+        <div className='w-full max-w-6xl m-auto px-5 fixed top-10 z-30 left-0 right-0'>
             <div className="flex items-center justify-between">
                 <div className="brand flex items-center md:gap-10 gap-5">
-                    <img src={theme === "light" ? '/PortfolioReact/portfoliologo.png' : '/PortfolioReact/llogo.png'} alt="Website Logo" className='h-15 transition-all cursor-pointer' onClick={()=> {
-                        navigate('/PortfolioReact');
+                    <img src={theme === "light" ? '/portfoliologo.png' : '/llogo.png'} alt="Website Logo" className='h-15 transition-all cursor-pointer' onClick={()=> {
+                        navigate('/');
                         setClicked(false);
                         }}/>
                     <h2 className={`otherFont md:text-2xl font-bold -translate-y-3 ${theme === "light" ? 'text-black' : 'text-white'} transition-all duration-300 opacity-0 ${clicked ? 'opacity-100 translate-y-0' : 'opacity-0'}`}>Kuljit Singh Dhaliwal</h2>
@@ -24,7 +24,7 @@ function Navbar() {
                 <div className="flex gap-5 items-center">
                     <div className='relative w-5 h-5 z-10'>
                         <IoMoonOutline onClick={toggleTheme} className={`text-xl cursor-pointer absolute transition-all ${theme === "light" ? "opacity-100" : "opacity-0"}`} />
-                        <CiSun onClick={toggleTheme} className={`text-xl absolute cursor-pointer text-white transition-all ${theme === "light" ? "opacity-0" : "opacity-100"}`} />
+                        <CiSun onClick={toggleTheme} className={`text-xl absolute cursor-pointer text-yellow-400 transition-all ${theme === "light" ? "opacity-0" : "opacity-100"}`} />
                     </div>
                     <div className='flex items-center h-9 w-9 justify-center group'>
                         <div className={`relative w-full h-full transition-all duration-300 cursor-pointer`} onClick={handleClick}>
@@ -40,7 +40,7 @@ function Navbar() {
                                 <circle cx="72.5" cy="68.5" r="9.5" stroke={theme === "light" ? "black" : "white"} strokeWidth="2"/>
                             </svg>
                             <img
-                                src={theme === "light" ? '/PortfolioReact/cross.png' : '/PortfolioReact/lcross.png'}
+                                src={theme === "light" ? '/cross.png' : '/lcross.png'}
                                 alt="Cross"
                                 className={`
                                 transition-all duration-300 transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 

@@ -19,6 +19,8 @@
 
 
 
+
+
 body.bg-light{
   background-color: white;
 
@@ -28,13 +30,15 @@ body.bg-dark{
   background-color: rgb(38, 33, 34);
 }
 
-.noisy-back{
-  filter: url(#noiseFilter);
-  position: fixed;
+.back{
+  background-image: url(/public/noise-light.png);
   inset: 0;
+  position: fixed;
+  background-position: center;
   pointer-events: none;
-  z-index: 0;
+  background-size: auto;
 }
+
 
 
 
