@@ -37,7 +37,7 @@ function About() {
                     <div className='flex gap-5 mt-6'>
                         <div className={`flex items-center relative group text-xl ${theme === "light" ? 'text-gray-500' : 'text-white'} group transition-all duration-300 cursor-pointer`}>
                             <FaArrowDownLong />
-                            <a href="/CVKuljit.pdf" download>
+                            <a href="/cvkuljit.pdf" download>
                                 <span>res<span className='group-hover:scale-x-150 transition-all duration-300 inline-block'>u</span>me</span>
                             </a>
                             <p className={`absolute w-0 group-hover:w-full transition-all duration-300 h-[2px] bottom-0 ${theme === "light" ? 'bg-black' : 'bg-white'}`}></p>
